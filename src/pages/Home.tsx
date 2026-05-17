@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { API_BASE_URL } from '../config';
 
 const Home: React.FC = () => {
   const navigate = useNavigate();
@@ -8,7 +9,7 @@ const Home: React.FC = () => {
 
   const fetchRooms = async () => {
     try {
-      const res = await fetch(`http://${window.location.hostname}:8080/api/rooms`, {
+      const res = await fetch(`${API_BASE_URL}/api/rooms`, {
         headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
       });
       if (res.ok) {
@@ -37,7 +38,7 @@ const Home: React.FC = () => {
     if (roomName === null) return; // Cancelled
 
     try {
-      const res = await fetch(`http://${window.location.hostname}:8080/api/rooms`, {
+      const res = await fetch(`${API_BASE_URL}/api/rooms`, {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',
@@ -58,7 +59,7 @@ const Home: React.FC = () => {
 
   const handleJoinRoom = async (roomId: string) => {
     try {
-      const res = await fetch(`http://${window.location.hostname}:8080/api/rooms/${roomId}/join`, {
+      const res = await fetch(`${API_BASE_URL}/api/rooms/${roomId}/join`, {
         method: 'POST',
         headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
       });

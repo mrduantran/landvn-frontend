@@ -1,12 +1,12 @@
 import { Client } from '@stomp/stompjs';
 import SockJS from 'sockjs-client';
+import { WS_URL } from '../config';
 
 let stompClient: Client | null = null;
-const API_URL = `http://${window.location.hostname}:8080/ws-game`;
 
 export const connectWebSocket = (roomId: string, onStateUpdate: (state: any) => void) => {
     stompClient = new Client({
-        webSocketFactory: () => new SockJS(API_URL),
+        webSocketFactory: () => new SockJS(WS_URL),
         reconnectDelay: 5000,
         onConnect: () => {
             console.log('Connected to WebSocket');

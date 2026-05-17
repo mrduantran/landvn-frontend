@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { connectWebSocket, disconnectWebSocket, takeTokens, buyCard } from '../services/websocket';
+import { API_BASE_URL } from '../config';
 
 import GameBoard from '../components/GameBoard';
 import PlayerBoard from '../components/PlayerBoard';
@@ -12,7 +13,7 @@ const Room: React.FC = () => {
 
   useEffect(() => {
     if (roomId) {
-      fetch(`http://${window.location.hostname}:8080/api/game/${roomId}`, {
+      fetch(`${API_BASE_URL}/api/game/${roomId}`, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
@@ -43,7 +44,7 @@ const Room: React.FC = () => {
   const handleLeaveRoom = async () => {
     if (roomId) {
       try {
-        await fetch(`http://${window.location.hostname}:8080/api/rooms/${roomId}/leave`, {
+        await fetch(`${API_BASE_URL}/api/rooms/${roomId}/leave`, {
           method: 'POST',
           headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
         });
@@ -57,7 +58,7 @@ const Room: React.FC = () => {
   const handleStartGame = async () => {
     if (roomId) {
       try {
-        await fetch(`http://${window.location.hostname}:8080/api/rooms/${roomId}/start`, {
+        await fetch(`${API_BASE_URL}/api/rooms/${roomId}/start`, {
           method: 'POST',
           headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
         });

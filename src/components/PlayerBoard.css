@@ -78,3 +78,13 @@
 .player-bonus {
   border-radius: 8px; /* Square for bonus to differentiate from round tokens */
 }
+
+@media (max-width: 768px) {
+  .player-board {
+    width: 100%;
+    padding: 1rem;
+  }
+  .token-row, .bonus-row {
+    flex-wrap: wrap;
+  }
+}

@@ -131,3 +131,60 @@
   padding: 2px 10px;
   border-radius: 10px;
 }
+
+@media (max-width: 768px) {
+  .game-board {
+    padding: 1rem;
+  }
+  .cards-area {
+    gap: 1rem;
+  }
+  .card-row {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding-bottom: 0.5rem;
+    -webkit-overflow-scrolling: touch;
+  }
+  .deck {
+    min-width: 90px;
+    width: 90px;
+    height: 120px;
+    font-size: 0.8rem;
+  }
+  .project-card {
+    min-width: 90px;
+    width: 90px;
+    height: 120px;
+    padding: 6px;
+  }
+  .card-points {
+    font-size: 1.2rem;
+  }
+  .card-bonus {
+    width: 16px;
+    height: 16px;
+  }
+  .cost-token {
+    width: 18px;
+    height: 18px;
+    font-size: 0.7rem;
+  }
+  .bank-tokens {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 1rem;
+  }
+  .nobles-row {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding-bottom: 0.5rem;
+    -webkit-overflow-scrolling: touch;
+  }
+  .noble-card {
+    min-width: 90px;
+    width: 90px;
+    height: 90px;
+  }
+}

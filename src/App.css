@@ -162,3 +162,64 @@
   from { opacity: 0; transform: translateY(40px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+.room-container {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+}
+
+.room-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.room-title {
+  margin: 0;
+  text-align: center;
+  flex-grow: 1;
+}
+
+.room-header-spacer {
+  width: 80px;
+}
+
+.players-container {
+  padding: 2rem;
+}
+
+.players-list {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .app-container, .room-container, .players-container {
+    padding: 1rem;
+  }
+  .token {
+    width: 60px;
+    height: 60px;
+    font-size: 0.7rem;
+  }
+  .title {
+    font-size: 2.5rem;
+  }
+  .btn-primary, .btn-secondary {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+  .room-header {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .room-title {
+    font-size: 1.2rem;
+    order: -1;
+    width: 100%;
+  }
+}

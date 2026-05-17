@@ -71,16 +71,16 @@ const Room: React.FC = () => {
   const currentPlayer = gameState?.players?.find((p: any) => p.id === localStorage.getItem('username'));
 
   return (
-    <div className="room-container" style={{ padding: '2rem', display: 'flex', flexDirection: 'column', gap: '2rem', width: '100%' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+    <div className="room-container">
+      <div className="room-header">
         <button className="btn-secondary" onClick={handleLeaveRoom}>
           ⬅ Thoát
         </button>
-        <h2 style={{ margin: 0, textAlign: 'center', flexGrow: 1 }}>Phòng chơi: {roomId}</h2>
+        <h2 className="room-title">Phòng chơi: {roomId}</h2>
         {gameState?.status === 'WAITING' ? (
            <button className="btn-primary" onClick={handleStartGame}>Bắt Đầu</button>
         ) : (
-           <div style={{ width: '80px' }}></div>
+           <div className="room-header-spacer"></div>
         )}
       </div>
       
@@ -96,9 +96,9 @@ const Room: React.FC = () => {
             onTakeTokens={handleTakeTokens} 
             onBuyCard={handleBuyCard} 
           />
-          <div className="players-container glass-panel" style={{ padding: '2rem' }}>
+          <div className="players-container glass-panel">
             <h3>Người chơi</h3>
-            <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}>
+            <div className="players-list">
               {gameState.players?.length === 0 && <p>Chưa có người chơi nào.</p>}
               {gameState.players?.map((player: any, index: number) => (
                 <PlayerBoard 

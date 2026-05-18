@@ -123,15 +123,15 @@ const GameBoard: React.FC<GameBoardProps> = ({ state, currentPlayer, onTakeToken
 
       <div className="cards-area">
         <div className="card-row">
-          <div className="deck level-3">Cấp 3</div>
+          <div className="level-label">Lv3</div>
           {state.tableLevel3?.map((card: any) => <ProjectCard key={card.id} card={card} onBuy={onBuyCard} />)}
         </div>
         <div className="card-row">
-          <div className="deck level-2">Cấp 2</div>
+          <div className="level-label">Lv2</div>
           {state.tableLevel2?.map((card: any) => <ProjectCard key={card.id} card={card} onBuy={onBuyCard} />)}
         </div>
         <div className="card-row">
-          <div className="deck level-1">Cấp 1</div>
+          <div className="level-label">Lv1</div>
           {state.tableLevel1?.map((card: any) => <ProjectCard key={card.id} card={card} onBuy={onBuyCard} />)}
         </div>
       </div>

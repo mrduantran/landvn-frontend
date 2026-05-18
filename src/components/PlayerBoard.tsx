@@ -18,12 +18,12 @@ const tokenColors: Record<string, string> = {
 
 const PlayerBoard: React.FC<PlayerBoardProps> = ({ player, isCurrentPlayer, isActiveTurn }) => {
   return (
-    <div className={`player-board glass-panel ${isActiveTurn ? 'active-turn' : ''}`} style={{ border: isCurrentPlayer && !isActiveTurn ? '1px solid rgba(255,255,255,0.3)' : undefined }}>
+    <div className={`player-board glass-panel ${isActiveTurn ? 'active-turn' : ''} ${isCurrentPlayer ? 'current-player-board' : 'opponent-player-board'}`} style={{ border: isCurrentPlayer && !isActiveTurn ? '1px solid rgba(255,255,255,0.3)' : undefined }}>
       <div className="player-header">
         <h4>
           {player.id}
           {isCurrentPlayer && <span className="current-player-badge">(Bạn)</span>}
-          {isActiveTurn && <span style={{color: '#00ff88', marginLeft: '10px', fontSize: '0.9rem', fontWeight: 'bold'}}>Đang đi...</span>}
+          {isActiveTurn && <span className="turn-indicator">Đang đi...</span>}
         </h4>
         <div className="player-points">{player.points} Điểm</div>
       </div>

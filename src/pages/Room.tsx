@@ -68,7 +68,14 @@ const Room: React.FC = () => {
     }
   };
 
-  const currentPlayer = gameState?.players?.find((p: any) => p.id === localStorage.getItem('username'));
+  const username = localStorage.getItem('username') || 'player1';
+  const currentPlayer = gameState?.players?.find((p: any) => p.id === username);
+  
+  const sortedPlayers = gameState?.players ? [...gameState.players].sort((a: any, b: any) => {
+    if (a.id === username) return -1;
+    if (b.id === username) return 1;
+    return 0;
+  }) : [];
 
   return (
     <div className="room-container">
@@ -99,15 +106,18 @@ const Room: React.FC = () => {
           <div className="players-container glass-panel">
             <h3>Người chơi</h3>
             <div className="players-list">
-              {gameState.players?.length === 0 && <p>Chưa có người chơi nào.</p>}
-              {gameState.players?.map((player: any, index: number) => (
-                <PlayerBoard 
-                  key={player.id} 
-                  player={player} 
-                  isCurrentPlayer={player.id === localStorage.getItem('username')} 
-                  isActiveTurn={index === gameState.currentPlayerIndex && gameState.status === 'PLAYING'}
-                />
-              ))}
+              {sortedPlayers.length === 0 && <p>Chưa có người chơi nào.</p>}
+              {sortedPlayers.map((player: any) => {
+                const originalIndex = gameState.players.findIndex((p: any) => p.id === player.id);
+                return (
+                  <PlayerBoard 
+                    key={player.id} 
+                    player={player} 
+                    isCurrentPlayer={player.id === username} 
+                    isActiveTurn={originalIndex === gameState.currentPlayerIndex && gameState.status === 'PLAYING'}
+                  />
+                );
+              })}
             </div>
           </div>
         </>

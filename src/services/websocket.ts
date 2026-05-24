@@ -46,3 +46,12 @@ export const buyCard = (roomId: string, playerId: string, cardId: string) => {
     });
   }
 };
+
+export const reserveCard = (roomId: string, playerId: string, cardId: string, returnedTokens: string[] = []) => {
+  if (stompClient && stompClient.connected) {
+    stompClient.publish({
+      destination: `/app/game/${roomId}/reserve-card`,
+      body: JSON.stringify({ playerId, cardId, returnedTokens })
+    });
+  }
+};

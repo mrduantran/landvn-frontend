@@ -50,6 +50,19 @@ const PlayerBoard: React.FC<PlayerBoardProps> = ({ player, isCurrentPlayer, isAc
             ))}
           </div>
         </div>
+
+        {player.reservedCards && player.reservedCards.length > 0 && (
+          <div className="stat-group">
+            <h5>Thẻ giữ ({player.reservedCards.length}/3)</h5>
+            <div className="bonus-row">
+              {player.reservedCards.map((card: any) => (
+                <div key={card.id} className="player-bonus" style={{ background: '#444', fontSize: '0.7rem' }}>
+                  Lv{card.level}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

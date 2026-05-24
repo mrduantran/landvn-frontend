@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { connectWebSocket, disconnectWebSocket, takeTokens, buyCard } from '../services/websocket';
+import { connectWebSocket, disconnectWebSocket, takeTokens, buyCard, reserveCard } from '../services/websocket';
 import { API_BASE_URL } from '../config';
 
 import GameBoard from '../components/GameBoard';
@@ -39,6 +39,12 @@ const Room: React.FC = () => {
     if (!roomId) return;
     const username = localStorage.getItem('username') || 'player1';
     buyCard(roomId, username, cardId);
+  };
+
+  const handleReserveCard = (cardId: string, returnedTokens: string[]) => {
+    if (!roomId) return;
+    const username = localStorage.getItem('username') || 'player1';
+    reserveCard(roomId, username, cardId, returnedTokens);
   };
 
   const handleLeaveRoom = async () => {
@@ -102,6 +108,7 @@ const Room: React.FC = () => {
             currentPlayer={currentPlayer}
             onTakeTokens={handleTakeTokens} 
             onBuyCard={handleBuyCard} 
+            onReserveCard={handleReserveCard}
           />
           <div className="players-container glass-panel">
             <h3>Người chơi</h3>

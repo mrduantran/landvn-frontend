@@ -259,8 +259,9 @@ const GameBoard: React.FC<GameBoardProps> = ({ state, currentPlayer, onTakeToken
 };
 
 const ProjectCard = ({ card, onBuy, onReserve }: { card: any, onBuy: (id: string) => void, onReserve?: (id: string) => void }) => {
+  const cardColorClass = card.bonus ? `card-${card.bonus.toLowerCase()}` : '';
   return (
-    <div className="card project-card">
+    <div className={`card project-card ${cardColorClass}`}>
       <div className="card-header">
          <span className="card-points">{card.points > 0 ? card.points : ''}</span>
          <span className={`card-bonus ${tokenColors[card.bonus]}`}></span>

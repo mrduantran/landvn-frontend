@@ -16,13 +16,21 @@
 .noble-card {
   width: 120px;
   height: 120px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 215, 0, 0.5);
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(184, 134, 11, 0.4));
+  border: 2px solid rgba(255, 215, 0, 0.7);
   border-radius: 12px;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 10px;
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.15);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s;
+  cursor: pointer;
+}
+
+.noble-card:hover {
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 10px 25px rgba(255, 215, 0, 0.3);
 }
 
 .cards-area {
@@ -61,14 +69,24 @@
   flex-direction: column;
   justify-content: space-between;
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.2s, filter 0.2s;
   border: 1px solid var(--glass-border);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .project-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  filter: brightness(1.2);
 }
+
+/* Dynamic Card Colors based on Bonus Type */
+.card-villa { background: linear-gradient(135deg, rgba(52, 211, 153, 0.15), rgba(5, 150, 105, 0.4)); border-color: rgba(52, 211, 153, 0.6); }
+.card-apartment { background: linear-gradient(135deg, rgba(96, 165, 250, 0.15), rgba(37, 99, 235, 0.4)); border-color: rgba(96, 165, 250, 0.6); }
+.card-townhouse { background: linear-gradient(135deg, rgba(248, 113, 113, 0.15), rgba(220, 38, 38, 0.4)); border-color: rgba(248, 113, 113, 0.6); }
+.card-resort { background: linear-gradient(135deg, rgba(241, 245, 249, 0.15), rgba(148, 163, 184, 0.4)); border-color: rgba(241, 245, 249, 0.6); }
+.card-land { background: linear-gradient(135deg, rgba(167, 139, 250, 0.15), rgba(124, 58, 237, 0.4)); border-color: rgba(167, 139, 250, 0.6); }
+.card-gold { background: linear-gradient(135deg, rgba(253, 224, 71, 0.15), rgba(217, 119, 6, 0.4)); border-color: rgba(253, 224, 71, 0.6); }
 
 .card-header {
   display: flex;

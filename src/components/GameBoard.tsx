@@ -266,16 +266,15 @@ const ProjectCard = ({ card, onBuy, onReserve }: { card: any, onBuy: (id: string
          <span className="card-points">{card.points > 0 ? card.points : ''}</span>
          <span className={`card-bonus ${tokenColors[card.bonus]}`}></span>
       </div>
-      <div className="card-body">Dự án BĐS</div>
       <div className="card-cost">
         {Object.entries(card.cost || {}).map(([type, amount]) => (
           <div key={type} className={`cost-token ${tokenColors[type]}`}>{amount as number}</div>
         ))}
       </div>
-      <div style={{ display: 'flex', gap: '4px', marginTop: '8px' }}>
-          <button className="btn-primary" style={{flex: 1, padding: '4px', fontSize: '0.8rem', minWidth: 0}} onClick={(e) => { e.stopPropagation(); onBuy(card.id); }}>Mua</button>
+      <div className="card-actions">
+          <button className="btn-primary" onClick={(e) => { e.stopPropagation(); onBuy(card.id); }}>Mua</button>
           {onReserve && (
-              <button className="btn-secondary" style={{flex: 1, padding: '4px', fontSize: '0.8rem', minWidth: 0}} onClick={(e) => { e.stopPropagation(); onReserve(card.id); }}>Giữ</button>
+              <button className="btn-secondary" onClick={(e) => { e.stopPropagation(); onReserve(card.id); }}>Giữ</button>
           )}
       </div>
     </div>
